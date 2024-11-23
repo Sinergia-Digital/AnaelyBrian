@@ -1,16 +1,497 @@
 ---
-
+import Temp from '../components/Temp.astro'
+import BtnLink from '../components/BtnLink.astro'
+import MusicBtn from '../components/MusicBtn.astro'
 ---
 
-<html lang="en">
+<html lang='en'>
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta charset='utf-8' />
+		<link rel='icon' href='/favicon.ico' />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
+		<title>More</title>
+
+		<style is:global>
+
+			.color-gradient {
+				background: linear-gradient(27deg, rgba(244,239,230,1) 0%, rgba(221,207,186,1) 100%);
+			}
+		
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					translate: 0 100px;
+				}
+				to {
+					opacity: 1;
+					translate: 0 0;
+				}
+			}
+		
+			@keyframes showModal {
+					from {
+						opacity: 0;
+					}
+				}
+		
+			.modal {
+				animation: showModal .5s ease-in-out
+			}
+			
+		
+			.reveal {
+				opacity: 0;
+			}
+			.fadeIn {
+				animation: fadeIn .5s ease-in-out both;
+			}
+		
+			@keyframes charge-title {
+				from {
+					opacity: 0;
+					translate: 0 200px;
+					scale: 1.5;
+				}
+				to {
+					opacity: 1;
+					translate: 0 0;
+					scale: 1;
+				}
+			}
+			@keyframes charge-subtitle {
+				from {
+					opacity: 0;
+					translate: 100px 50px;
+				}
+				to {
+					opacity: 1;
+					translate: 0 0;
+				}
+			}
+			@keyframes showingImages {
+				from {
+					opacity: 0;
+					scale: 1.5;
+				}
+			}
+		
+			.animateImage  {
+				animation: showingImages 3s ease-out;
+			}
+
+			/* icons animations */
+			.copa1, .copa2, .saco, .vestido, .musica, .tapa, .caja, .music-right, .music-left {
+				position: absolute;
+				top: 0;
+				height: 100%;
+				object-fit: contain;
+			}
+			.copa1 {
+				left: 0;
+				animation: moveCopa1 1s ease-in-out infinite alternate;
+			}
+			.copa2 {
+				right: 0;
+				animation: moveCopa2 1s ease-in-out infinite alternate;
+			}
+			.brillo-copas {
+				position: absolute;
+				top: -30px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				width: 40px;
+				animation: brillo-copas 1s ease-in-out infinite alternate;
+			}
+
+			@keyframes moveCopa1 {
+				0% {rotate: 0; translate: -10px 3px;}
+				30% {rotate: 0; translate: -10px 3px;}
+				30% {rotate: -5deg;}
+				70% {rotate: 23deg; translate: 0 0;}
+				100% {rotate: 23deg;}
+			}
+
+			@keyframes moveCopa2 {
+				0% {rotate: 0; translate: 10px 3px;}
+				30% {rotate: 0; translate: 10px 3px;}
+				30% {rotate: 5deg;}
+				70% {rotate: -23deg; translate: 0 0;}
+				100% {rotate: -23deg;}
+			}
+
+			@keyframes brillo-copas {
+				0% {opacity: 0;}
+				60% {opacity: 0; translate: 0 15px;}
+				70% {opacity: 1; translate: 0 0;}
+				90% {opacity: 1;}
+			}
+
+			.saco {
+				left: 0;
+				animation: dance 1s ease-in-out infinite alternate;
+			}
+			.vestido {
+				right: 0;
+				animation: dance 1s ease-in-out infinite alternate-reverse;
+			}
+
+			@keyframes dance {
+				0% {rotate: 5deg;translate: 0 2px;}
+				20% {rotate: 5deg;translate: 0 0;}
+				40% {translate: 0 2px;}
+				60% {translate: 0 2px;}
+				80% {rotate: -5deg; translate: 0 0;}
+				100% {rotate: -5deg; translate: 0 2px;}
+			}
+
+			.musica {
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				animation: musica 1.5s ease-in-out infinite alternate;
+			}
+			.music-right, .music-left {
+				width: 12px;
+				object-fit: contain;
+			}
+
+			.music-right {
+				right: -5px;
+				top: 15px;
+				animation: musica 1s ease-in-out infinite .3s alternate;
+			}
+			.music-left {
+				left: 15px;
+				top: -30px;
+				animation: musica .7s ease-in-out infinite 1s alternate;
+			}
+
+			@keyframes musica {
+				0% {rotate: 10deg;}
+				50% {rotate: 0;}
+				100% {rotate: -10deg;}
+			}
+
+			.gift-icon {
+				width: 100%;
+				height: 100%;
+				animation: gift 2s ease-in-out infinite alternate;
+			}
+
+			.tapa {
+				top: -45px;
+				animation: tapa 2s ease-in-out infinite alternate;
+			}
+
+			@keyframes gift {
+				0% {rotate: 5deg; translate: 5px 0;}
+				10% {rotate: -5deg; translate: -5px 0;}
+				20% {rotate: 5deg; translate: 5px 0;}
+				30% {rotate: -5deg; translate: -5px 0;}
+				40% {rotate: 5deg; translate: 5px 0;}
+				100% {rotate: 5deg; translate: 5px 0;}
+			}
+
+			@keyframes tapa {
+				10% {rotate: 0deg; translate: 0 0;}
+				50% {rotate: 0deg; translate: 0 0;}
+				70% {rotate: 50deg; translate: 40px -30px;}
+				100% {rotate: 50deg; translate: 40px -30px;}
+			}
+		
+			#titleImage {
+				animation: charge-title 1s ease-in-out;
+			}
+			#misxv {
+				animation: charge-subtitle .7s ease-in-out 1s forwards;
+			}
+		
+			@font-face {
+				font-family: 'britany';
+				src: url('/fonts/BRITTANYSIGNATURE.ttf');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+			@font-face {
+				font-family: 'Oswald-ExtraLight';
+				src: url('/fonts/Oswald-ExtraLight.ttf');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+		
+			@font-face {
+				font-family: 'Oswald-Light';
+				src: url('/fonts/Oswald-Light.ttf');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+		
+			@font-face {
+				font-family: 'Oswald-Regular';
+				src: url('/fonts/Oswald-Regular.ttf');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+		
+			@font-face {
+				font-family: 'Oswald';
+				src: url('/fonts/Oswald-Medium.ttf');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+		
+			@font-face {
+				font-family: 'Oswald-SemiBold';
+				src: url('/fonts/Oswald-SemiBold.ttf');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+		
+			@font-face {
+				font-family: 'Oswald-Bold';
+				src: url('/fonts/Oswald-Bold.ttf');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+		</style>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="relative">
+		<MusicBtn />
+
+		<div class='max-w-full overflow-hidden relative'>
+			<img src='Fondo/Fondo1/Izquierda 2.png' alt='background' class='absolute -z-10 bottom-[0] left-[0] w-[50%] max-w-[310px] translate-x-[-40%] translate-y-[-60%]'>
+			<img src='Fondo/Fondo1/Abajo izquierda.png' alt='background' class='animateImage absolute -z-20 bottom-[0] left-[0] w-[80%] max-w-[690px] translate-y-[10%]'>
+			<img src='Fondo/Fondo1/izquierda 3.png' alt='background' class='absolute -z-10 bottom-[0] left-[0] w-[50%] max-w-[310px] translate-x-[-10%] translate-y-[-55%]'>
+			<img src='Fondo/Fondo1/izquierda 3.png' alt='background' class='absolute -z-10 bottom-[0] left-[0] w-[50%] max-w-[310px] translate-x-[-10%] translate-y-[-55%]'>
+
+			<!-- preview -->
+			<section class='h-screen w-full grid place-content-center relative'>
+				<img src='Fondo/Fondo1/Arriba derecha.png' alt='background' class='animateImage absolute -z-20 -top-[50px] -right-[30px] w-[50%]'>
+				<img src='Fondo/Fondo1/Izquierda1.png' alt='background' class='absolute -z-10 top-[0] left-[0] w-[80%] max-w-[500px] translate-x-[-30%] translate-y-[-10%]'>
+
+				<img src='Fondo/Fondo1/Derecha 4.png' alt='background' class='absolute -z-10 top-[40%] right-[0] w-[80%] max-w-[500px] translate-x-[45%] translate-y-[0]'>
+				
+				<div class='flex flex-col'>
+					<h1 class="font-[britany] text-9xl text-[#434240] mb-6" id="titleImage">More</h1>
+					<h2 class='text-end font-[Oswald-Light] text-6xl text-[#434240] mb-3 translate-y-[-20px] translate-x-[10px] opacity-0' id="misxv">Mis XV</h2>
+				</div>
+			</section>
+	
+			<!-- temporizador -->
+			<section class='grid place-content-center reveal'>
+				<Temp />
+			</section>
+		</div>
+
+		<!-- information -->
+		<section class='bg-[#e7ddcd] py-20 color-gradient'>
+			<div class='reveal flex flex-col items-center'>
+
+				<div class="relative w-[80px] h-[80px] mb-2">
+					<img src='/animation-icons/4.png' alt='icon' class='copa1'>
+					<img src='/animation-icons/4.png' alt='icon' class='copa2'>
+					<img src='/animation-icons/5.png' alt='icon' class='brillo-copas'>
+				</div>
+
+				<h2 class='font-[Oswald-Regular] text-center text-3xl text-[#434240] mb-3'>FIESTA</h2>
+	
+				<div class='flex flex-col items-center font-[Oswald] text-center text-base text-[#434240] mb-5'>
+					<p>Viernes 20 de Diciembre de 2024</p>
+					<p>de las 21:00 a las 4:30 hs.</p>
+					<p>Villa Golf Eventos:</p>
+					<p>PADRE LUCHESSE KM4, X5105 Villa Allende, Córdoba</p>
+				</div>
+	
+				<span class='font-[Oswald] text-center text-base text-[#434240] mb-5'>
+					Clickea para saber como llegar
+				</span>
+	
+				<BtnLink href='https://www.google.com/maps/place/Villa+Golf+Eventos,+R%C3%ADo+de+Janeiro+2001,+X5105+Villa+Allende,+C%C3%B3rdoba/data=!4m2!3m1!1s0x94329cf5ab383f3b:0x282082eecf47413e?entry=gps&coh=192189&g_ep=CAESCjExLjE1NS4xMDEYACCenQoqdSw5NDI0MjU1Niw5NDIyMzI5OSw5NDIxNjQxMyw5NDIxMjQ5Niw5NDIwNzM5NCw5NDIwNzUwNiw5NDIwODUwNiw5NDIxNzUyMyw5NDIxODY1Myw5NDIyOTgzOSw0NzA4NzExOCw0NzA4NDM5Myw5NDIxMzIwMEICQVI%3D'>
+					Como llegar
+				</BtnLink>
+	
+				<span class='font-[Oswald] text-center text-base text-[#434240] my-5'>
+					¡Nos vemos allá!
+				</span>
+	
+				<span class='font-[Oswald-Regular] text-center text-base text-[#716e6c] mb-5'>
+					Se ruega puntualidad
+				</span>
+			</div>
+		</section>
+		
+		<div class='relative max-w-full overflow-hidden'>
+			<img src='Fondo/Fondo2/Arriba derecha.png' alt='background' class='absolute -z-20 top-[-2%] right-[-2%] w-[80%] max-w-[690px] translate-x-[35%] opacity-55'>
+			<img src='Fondo/Fondo2/izquierda abajo.png' alt='background' class='absolute -z-20 bottom-[0] left-[0] w-[50%] max-w-[690px] translate-x-[-15%] translate-y-[40%]'>
+			
+			<img src='Fondo/Fondo2/izquierda arriba torcido.png' alt='background' class='absolute -z-10 top-[0] left-[0] w-[30%] max-w-[280px] translate-x-[-20%] translate-y-[-40%] rotate-[30deg]'>
+			<img src='Fondo/Fondo2/izquierda aba.1.png' alt='background' class='absolute -z-10 top-[50%] left-[0] w-[40%] max-w-[230px] translate-x-[-30%] translate-y-[-10%]'>
+			<img src='Fondo/Fondo2/Derecha abajo torcida.png' alt='background' class='absolute -z-10 top-[55%] right-[0] w-[40%] max-w-[230px] translate-x-[50%] rotate-[-55deg]'>
+			<img src='Fondo/Fondo2/Derecha arriba 1.png' alt='background' class='absolute -z-10 top-[0] right-[0] w-[40%] max-w-[230px] translate-x-[40%] translate-y-[-10%]'>
+
+			<!-- confirm -->
+			<section class='flex flex-col items-center py-20 reveal'>
+				<h2 class='font-[Oswald-Regular] text-center text-3xl text-[#434240] mb-3'>CONFIRMAR ASISTENCIA</h2>
+
+				<span class='font-[Oswald-Regular] text-center text-sm text-[#434240] mb-3'>Espero que estes esta noche para compartirla conmigo</span>
+
+				<span class='font-[Oswald-Regular] text-center text-sm text-[#434240] mb-7'>¡Confirma tu asistencia aqui abajo!</span>
+
+				<BtnLink href='https://forms.gle/69jjhTgUNWd8EQZY9'>
+					CONFIRMAR ASISTENCIA
+				</BtnLink>
+			</section>
+
+			<!-- Dress code -->
+			<section class='flex flex-col items-center pt-0 pb-20 reveal'>
+
+				<div class="relative w-[110px] h-[80px] mb-2">
+					<img src='/animation-icons/saco.png' alt='icon' class='saco'>
+					<img src='/animation-icons/vestido.png' alt='icon' class='vestido'>
+				</div>
+				<h2 class='font-[Oswald-Regular] text-center text-3xl text-[#444341]'>DRESS CODE</h2>
+				<h3 class='font-[Oswald-Regular] text-center text-2xl text-[#444341] my-2'>Elegante sport</h3>
+
+				<span class='font-[Oswald-Regular] text-center text-lg text-[#444341]'>¡Lo suficientemente guapos para la foto,</span>
+				<span class='font-[Oswald-Regular] text-center text-lg text-[#444341]'>pero listos para bailar toda la noche!</span>
+			</section>
+		</div>
+
+		<div class='color-gradient'>
+			<!-- Playlist -->
+			<section class='flex flex-col items-center py-20 reveal'>
+
+				<div class="relative w-[110px] h-[80px] mb-2">
+					<img src='/animation-icons/musica.png' alt='icon' class='musica'>
+					<img src='/animation-icons/musica derecha.png' alt='icon' class='music-right'>
+					<img src='/animation-icons/musica izquierda.png' alt='icon' class='music-left'>
+				</div>
+
+				<h2 class='font-[Oswald-Regular] text-center text-3xl text-[#434240] mb-3'>PLAYLIST</h2>
+
+				<span class='font-[Oswald] text-center text-base text-[#444341]'>¡Tu playlist es clave para esta noche!</span>
+				<span class='font-[Oswald] text-center text-base text-[#444341] mb-5'>Contame qué canciones no pueden faltar.</span>
+
+				<BtnLink href='https://forms.gle/ZFpkfPPeZjyJgfiq8'>
+					PLAYLIST
+				</BtnLink>
+			</section>
+
+			<!-- Gifts -->
+			<section class='flex flex-col items-center py-20 reveal'>
+
+				<div class="relative w-[80px] h-[80px] mb-2">
+					<div class="gift-icon">
+						<img src='/animation-icons/tapa.png' alt='icon' class='tapa'>
+						<img src='/animation-icons/caja.png' alt='icon' class='caja'>
+					</div>
+				</div>
+
+				<span class='font-[Oswald] text-center text-base text-[#444341]'>Tu presencia es el mejor regalo,</span>
+				<span class='font-[Oswald] text-center text-base text-[#444341]'>pero si querés sorprenderme,</span>
+				<span class='font-[Oswald] text-center text-base text-[#444341]'>cualquier detalle para cumplir mis sueños</span>
+				<span class='font-[Oswald] text-center text-base text-[#444341]'>será más que bienvenido. ¡Gracias de corazón! ✨</span>
+
+				<button id="showButton" class="btn-link bg-[#9c7a32b5] w-[206px] h-[50px] grid place-content-center rounded-full text-white text-[18px] font-[Oswald] uppercase hover:bg-black transition-all duration-300 mt-5">
+					HACER UN REGALO
+				</button>
+
+				
+			</section>
+
+			<h3 class='font-[britany] text-[#434240] text-5xl pb-20 pt-10 text-center reveal'>¡Nos vemos allá!</h3>
+		</div>
+
+		<!-- modal -->
+		<div class="modal-container hidden fixed inset-0 top-0 bg-[#9c7b3279] h-screen w-screen place-content-center backdrop-blur-lg px-[20px]" id="modal-container">
+			<div class="modal bg-[url('/Fondo/modal-bg.webp')] bg-cover bg-center bg-no-repeat rounded-lg px-5 py-6 flex flex-col w-full">
+				<section class="mb-5">
+					<h3 class="font-[Oswald] text-center text-3xl text-[#444341]">DATOS BANCARIOS</h3>
+					<p class="font-[Oswald] text-center text-xl text-[#444341]">Nombre del Titular: Morena Serra</p>
+					<p class="font-[Oswald] text-center text-xl text-[#444341]">Alias: morenaserra</p>
+					<p class="font-[Oswald] text-center text-xl text-[#444341]">Mercado Pago</p>
+				</section>
+
+				<section>
+					<h3 class="font-[Oswald] text-center text-3xl text-[#444341]">BUZON DE REGALOS</h3>
+					<p class="font-[Oswald] text-center text-xl text-[#444341]">Si deseas hacer tu regalo personalmente,</p>
+					<p class="font-[Oswald] text-center text-xl text-[#444341]">El dia del evento habra un buzon para dejar obsequios</p>
+				</section>
+			</div>
+		</div>
+
+		<script>
+			function observeElementsWithAnimation(targetClass, animationClass) {
+			// Verifica si IntersectionObserver es soportado
+			if (!('IntersectionObserver' in window)) {
+				console.warn('IntersectionObserver no está soportado en este navegador.');
+				return;
+			}
+
+			// Selecciona todos los elementos con la clase específica
+			const elements = document.querySelectorAll(`.${targetClass}`);
+			
+			// Si no hay elementos, no hace nada
+			if (elements.length === 0) {
+				console.warn(`No se encontraron elementos con la clase '${targetClass}'.`);
+				return;
+			}
+
+			// Configuración del IntersectionObserver
+			const observerOptions = {
+				root: null, // Usa la ventana como viewport
+				threshold: 0.2 // El elemento debe ser al menos un 10% visible
+			};
+
+			const observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						// Agrega la clase de animación
+						entry.target.classList.add(animationClass);
+
+						// Deja de observar el elemento después de activarse la animación
+						observer.unobserve(entry.target);
+					}
+				});
+			}, observerOptions);
+
+			// Observa cada elemento
+			elements.forEach(element => observer.observe(element));
+		}
+
+		observeElementsWithAnimation('reveal', 'fadeIn');
+		</script>
+
+		<script>
+			const showButton = document.getElementById('showButton');
+			const modal = document.getElementById('modal-container');
+
+			let show = false
+			showButton.addEventListener('click', () => {
+				show = !show
+				modal.style.display = show ? 'grid' : 'none';
+			});
+
+			modal.addEventListener('click', () => {
+				show = false
+				modal.style.display = 'none';
+			})
+
+			if (show) {
+				document.body.style.overflow = 'hidden';
+			} else {
+				document.body.style.overflow = 'auto';
+			}
+
+		</script>
 	</body>
 </html>
