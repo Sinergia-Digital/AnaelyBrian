@@ -10,7 +10,7 @@ import MusicBtn from '../components/MusicBtn.astro'
 		<link rel='icon' href='/favicon.ico' />
 		<meta name='viewport' content='width=device-width' />
 		<meta name='generator' content={Astro.generator} />
-		<title>More</title>
+		<title>Baian & Anael</title>
 
 		<style is:global>
 
@@ -174,24 +174,9 @@ import MusicBtn from '../components/MusicBtn.astro'
 				100% {rotate: -10deg;}
 			}
 
-			.gift-icon {
-				width: 100%;
-				height: 100%;
-				animation: gift 2s ease-in-out infinite alternate;
-			}
-
 			.tapa {
 				top: -45px;
 				animation: tapa 2s ease-in-out infinite alternate;
-			}
-
-			@keyframes gift {
-				0% {rotate: 5deg; translate: 5px 0;}
-				10% {rotate: -5deg; translate: -5px 0;}
-				20% {rotate: 5deg; translate: 5px 0;}
-				30% {rotate: -5deg; translate: -5px 0;}
-				40% {rotate: 5deg; translate: 5px 0;}
-				100% {rotate: 5deg; translate: 5px 0;}
 			}
 
 			@keyframes tapa {
@@ -201,89 +186,223 @@ import MusicBtn from '../components/MusicBtn.astro'
 				100% {rotate: 50deg; translate: 40px -30px;}
 			}
 		
-			#titleImage {
+			.titleImage {
 				animation: charge-title 1s ease-in-out;
 			}
 			#misxv {
 				animation: charge-subtitle .7s ease-in-out 1s forwards;
 			}
-		
+
+			.ring-left {
+				animation: ring-left 2s infinite ease-in;
+			}
+			.ring-right {
+				animation: ring-right 2s infinite ease-in;
+			}
+
+			.corazon {
+				animation: corazon 2s infinite ease-in;
+			}
+
+			.destello-corazon-1 {
+				animation: destello-corazon-1 2s infinite ease-in;
+			}
+			.destello-corazon-2 {
+				animation: destello-corazon-2 2s infinite ease-in;
+			}
+
+			@keyframes destello-corazon-1 {
+				0%, 60%, 100% {
+					opacity: 0;
+					scale: 0;
+					translate: -50%;
+				}
+				15%, 45% {
+					opacity: 1;
+					scale: 1;
+					translate: 0 0;
+				}
+			}
+
+			@keyframes destello-corazon-2 {
+				0%, 60%, 100% {
+					opacity: 0;
+					scale: 0;
+					translate: -50%;
+				}
+				15%, 45% {
+					opacity: 1;
+					scale: 1;
+					translate: 0 0;
+				}
+			}
+
+			@keyframes corazon {
+				0%, 60%, 100% {
+					opacity: 0;
+					scale: 0;
+					translate: -50% 20px;
+				}
+				10%, 50% {
+					opacity: 1;
+					scale: 1;
+					translate: 0 0;
+				}
+			}
+
+			@keyframes ring-left {
+				0%, 100% {
+					translate: -3px 0;
+				}
+				10% {
+					translate: -3px 10px;
+				}
+				30% {
+					translate: 5px 5px;
+				}
+				70% {
+					translate: 5px 10px;
+				}
+				80% {
+					translate: -3px 5px;
+				}
+				
+			}
+
+			@keyframes ring-right {
+				0%, 100% {
+					translate: -3px 0;
+				}
+				10% {
+					translate: 3px 10px;
+				}
+				30% {
+					translate: -5px 5px;
+				}
+				70% {
+					translate: -5px 10px;
+				}
+				80% {
+					translate: 3px 5px;
+				}
+				
+			}
+
+			.tarjeta1 {
+				position: absolute;
+				transform-origin: left bottom;
+				bottom: 0;
+				animation: moveTarjeta1 2s ease-in-out infinite;
+			}
+
+			.tarjeta2 {
+				position: absolute;
+				transform-origin: left bottom;
+				z-index: -1;
+				bottom: 0;
+				animation: moveTarjeta2 2s ease-in-out infinite;
+			}
+
+			@keyframes moveTarjeta1 {
+				0%, 100% {rotate: 0;}
+				15% {rotate: -7deg;}
+				25% {rotate: -2deg;}
+				35%, 80% {rotate: -5deg;}
+			}
+			@keyframes moveTarjeta2 {
+				0%, 100% {rotate: 0;}
+				20% {rotate: -35deg; translate: 0 -5px;}
+				30% {rotate: -25deg; translate: 0 -5px;}
+				40%, 80% {rotate: -30deg; translate: 0 -5px;}
+			}
+
+			.phone {
+				height: 100%;
+				width: 100%;
+				object-fit: contain;
+				position: absolute;
+				position: absolute;
+				animation: movePhone 2s ease-in-out infinite;
+			}
+
+			.notification {
+				width: 100%;
+				height: 35%;
+				object-fit: contain;
+				position: absolute;
+				top: 18px;
+				right: -15px;
+				animation: moveNotification 2s ease-in-out infinite;
+			}
+
+			@keyframes movePhone {
+				0%, 100% {rotate: 0;}
+				5% {rotate: -5deg;}
+				10% {rotate: 5deg;}
+				15% {rotate: -5deg;}
+				20% {rotate: 5deg;}
+				25% {rotate: -5deg;}
+				30% {rotate: 5deg;}
+				35% {rotate: -5deg;}
+				40% {rotate: 0deg;}
+			}
+
+			@keyframes moveNotification {
+				0%, 30%, 100% {translate: 0 0;opacity: 1;}
+				40% {translate: -5px 0; opacity: 1;}
+				50% {translate: 5px 0; opacity: 1;}
+				70%, 90% {translate: -5px 0; opacity: 1;}
+			}
+
 			@font-face {
 				font-family: 'britany';
 				src: url('/fonts/BRITTANYSIGNATURE.ttf');
-				font-weight: normal;
-				font-style: normal;
-				font-display: swap;
 			}
+
 			@font-face {
-				font-family: 'Oswald-ExtraLight';
-				src: url('/fonts/Oswald-ExtraLight.ttf');
-				font-weight: normal;
-				font-style: normal;
-				font-display: swap;
+				font-family: 'Montserrat-light';
+				src: url('/fonts/Montserrat-Light.ttf');
 			}
-		
+
 			@font-face {
-				font-family: 'Oswald-Light';
-				src: url('/fonts/Oswald-Light.ttf');
-				font-weight: normal;
-				font-style: normal;
-				font-display: swap;
-			}
-		
-			@font-face {
-				font-family: 'Oswald-Regular';
-				src: url('/fonts/Oswald-Regular.ttf');
-				font-weight: normal;
-				font-style: normal;
-				font-display: swap;
-			}
-		
-			@font-face {
-				font-family: 'Oswald';
-				src: url('/fonts/Oswald-Medium.ttf');
-				font-weight: normal;
-				font-style: normal;
-				font-display: swap;
-			}
-		
-			@font-face {
-				font-family: 'Oswald-SemiBold';
-				src: url('/fonts/Oswald-SemiBold.ttf');
-				font-weight: normal;
-				font-style: normal;
-				font-display: swap;
-			}
-		
-			@font-face {
-				font-family: 'Oswald-Bold';
-				src: url('/fonts/Oswald-Bold.ttf');
-				font-weight: normal;
-				font-style: normal;
-				font-display: swap;
+				font-family: 'Montserrat';
+				src: url('/fonts/Montserrat-Regular.ttf');
 			}
 		</style>
 	</head>
 	<body class="relative">
+		<img
+			src='/background.jpg'
+			alt="bacground texture"
+			class="fixed top-0 left-0 w-full min-h-full object-cover -z-50 opacity-80"
+		>
+
 		<MusicBtn />
 
 		<div class='max-w-full overflow-hidden relative'>
 			<img src='Fondo/Fondo1/Izquierda 2.png' alt='background' class='absolute -z-10 bottom-[0] left-[0] w-[50%] max-w-[310px] translate-x-[-40%] translate-y-[-60%]'>
-			<img src='Fondo/Fondo1/Abajo izquierda.png' alt='background' class='animateImage absolute -z-20 bottom-[0] left-[0] w-[80%] max-w-[690px] translate-y-[10%]'>
 			<img src='Fondo/Fondo1/izquierda 3.png' alt='background' class='absolute -z-10 bottom-[0] left-[0] w-[50%] max-w-[310px] translate-x-[-10%] translate-y-[-55%]'>
 			<img src='Fondo/Fondo1/izquierda 3.png' alt='background' class='absolute -z-10 bottom-[0] left-[0] w-[50%] max-w-[310px] translate-x-[-10%] translate-y-[-55%]'>
-
+			<img src='Fondo/Fondo1/planta.png' alt='background' class='absolute -z-10 top-[-20px] right-[-30px] w-[80%] max-w-[500px]'>
+			
 			<!-- preview -->
 			<section class='h-screen w-full grid place-content-center relative'>
-				<img src='Fondo/Fondo1/Arriba derecha.png' alt='background' class='animateImage absolute -z-20 -top-[50px] -right-[30px] w-[50%]'>
 				<img src='Fondo/Fondo1/Izquierda1.png' alt='background' class='absolute -z-10 top-[0] left-[0] w-[80%] max-w-[500px] translate-x-[-30%] translate-y-[-10%]'>
-
+				
 				<img src='Fondo/Fondo1/Derecha 4.png' alt='background' class='absolute -z-10 top-[40%] right-[0] w-[80%] max-w-[500px] translate-x-[45%] translate-y-[0]'>
 				
-				<div class='flex flex-col'>
-					<h1 class="font-[britany] text-9xl text-[#434240] mb-6" id="titleImage">More</h1>
-					<h2 class='text-end font-[Oswald-Light] text-6xl text-[#434240] mb-3 translate-y-[-20px] translate-x-[10px] opacity-0' id="misxv">Mis XV</h2>
+				<div class='flex flex-col relative -rotate-12 translate-x-3'>
+					<img src='Fondo/Fondo1/planta.png' alt='background' class='absolute -z-10 bottom-[-30px] left-[-30px] w-[60%] rotate-180'>
+					<h1 class="titleImage font-[britany] text-8xl md:text-9xl text-text-color mb-14">Anael</h1>
+					<h1 class="titleImage font-[britany] text-8xl md:text-9xl text-text-color mb-6">Braian</h1>
+					<h1 class="titleImage font-[britany] rotate-12 text-[100px] md:text-[130px] text-[#9c7e35]/70 absolute top-[55px] right-[70px] md:top-[75px] md:right-[100px] -z-10">Y</h1> 
 				</div>
+
+				<h4
+					class="font-[Montserrat-light] text-center text-2xl text-[#9c7e35] absolute bottom-[100px] left-[50%] translate-x-[-50%] text-nowrap"
+				>
+					- NOS CASAMOS -
+				</h4>
 			</section>
 	
 			<!-- temporizador -->
@@ -293,60 +412,102 @@ import MusicBtn from '../components/MusicBtn.astro'
 		</div>
 
 		<!-- information -->
-		<section class='bg-[#e7ddcd] py-20 color-gradient'>
-			<div class='reveal flex flex-col items-center'>
+		<section class='bg-background-color/70 py-10 gradient-color shadow-lg relative'>
+			<span class="inline-block bg-white w-full h-[5px] absolute top-[10px]"/>
 
-				<div class="relative w-[80px] h-[80px] mb-2">
-					<img src='/animation-icons/4.png' alt='icon' class='copa1'>
-					<img src='/animation-icons/4.png' alt='icon' class='copa2'>
-					<img src='/animation-icons/5.png' alt='icon' class='brillo-copas'>
+			<h2 class="font-[montserrat] text-center text-2xl text-balance md:text-3xl text uppercase mb-14 text-white">
+				¡Queremos que seas parte de esta gran noche!
+			</h2>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-52">
+				<div class='reveal flex flex-col items-center w-fit place-self-center md:place-self-end'>
+	
+					<div class="relative w-[150px] mx-auto h-[80px]">
+						<div class="scale-50">
+							<img src="animation-icons/destello corazon.png" alt="ring" class="absolute -top-8 left-1/2 -translate-x-[50px] -rotate-90 w-[30px] destello-corazon-1">
+							<img src="animation-icons/destello corazon.png" alt="ring" class="absolute -top-8 left-1/2 translate-x-[20px] rotate-90 w-[30px] destello-corazon-2">
+							<img src="animation-icons/corazon.png" alt="ring" class="absolute -top-10 left-1/2 -translate-x-[50%] w-[40px] corazon">
+			
+							<img src="animation-icons/Anilla el.png" alt="ring" class="absolute top-5 left-0 rotate-180 w-[100px] ring-left">
+							<img src="animation-icons/Anillo ella.png" alt="ring" class="absolute -top-1 right-0 w-[100px] rotate-12 ring-right">
+							<img src="animation-icons/anillo el 2.png" alt="ring" class="absolute top-5 left-0 rotate-180 w-[100px] mt-[50px] ring-left">
+						</div>
+					</div>
+	
+					<h2 class='font-[Montserrat] text-3xl text-white mt-1 mb-3'>SI, ACEPTO!</h2>
+		
+					<div class='flex flex-col font-[Montserrat] text-base text-white mb-5 mx-5 text-balance'>
+						<p>Viernes 28 de Febrero de 2025</p>
+						<p>a las 21:40 hs</p>
+						<p>Iglesia "Nuestra Señora de la Merced"</p>
+						<p>Belisario Roldan y Vicente Lopez - Rio Cuarto</p>
+					</div>
+		
+					<span class='font-[Montserrat] text-center text-base text-white mb-5'>
+						Clickea para saber como llegar
+					</span>
+		
+					<BtnLink
+						outline
+						href='https://maps.app.goo.gl/DTDiFW8VBGihijNG8'
+					>
+						Como llegar
+					</BtnLink>
 				</div>
 
-				<h2 class='font-[Oswald-Regular] text-center text-3xl text-[#434240] mb-3'>FIESTA</h2>
+				<div class='reveal flex flex-col items-center w-fit place-self-center md:place-self-start'>
 	
-				<div class='flex flex-col items-center font-[Oswald] text-center text-base text-[#434240] mb-5'>
-					<p>Viernes 20 de Diciembre de 2024</p>
-					<p>de las 21:00 a las 4:30 hs.</p>
-					<p>Villa Golf Eventos:</p>
-					<p>PADRE LUCHESSE KM4, X5105 Villa Allende, Córdoba</p>
+					<div class="relative w-[80px] h-[80px] mb-2">
+						<img src='/animation-icons/copa.png' alt='icon' class='copa1'>
+						<img src='/animation-icons/copa.png' alt='icon' class='copa2'>
+						<img src='/animation-icons/destello corazon.png' alt='icon' class='brillo-copas'>
+					</div>
+	
+					<h2 class='font-[Montserrat] text-3xl text-white mt-1 mb-3'>FIESTA FIESTA!</h2>
+		
+					<div class='flex flex-col font-[Montserrat] text-base text-white mb-5 mx-5 text-balance'>
+						<p>Al finalizar la ceremonia</p>
+						<p>los esperamos en</p>
+						<p>Sal Grosa fiestas y eventos</p>
+						<p>Av. Marcelo T. de Alvear 1177 - Rio Cuarto</p>
+					</div>
+		
+					<span class='font-[Montserrat] text-center text-base text-white mb-5'>
+						Clickea para saber como llegar
+					</span>
+		
+					<BtnLink
+						outline
+						href='https://maps.app.goo.gl/1p4bsKcQ9q2baRM2A'
+					>
+						Como llegar
+					</BtnLink>
 				</div>
-	
-				<span class='font-[Oswald] text-center text-base text-[#434240] mb-5'>
-					Clickea para saber como llegar
-				</span>
-	
-				<BtnLink href='https://www.google.com/maps/place/Villa+Golf+Eventos,+R%C3%ADo+de+Janeiro+2001,+X5105+Villa+Allende,+C%C3%B3rdoba/data=!4m2!3m1!1s0x94329cf5ab383f3b:0x282082eecf47413e?entry=gps&coh=192189&g_ep=CAESCjExLjE1NS4xMDEYACCenQoqdSw5NDI0MjU1Niw5NDIyMzI5OSw5NDIxNjQxMyw5NDIxMjQ5Niw5NDIwNzM5NCw5NDIwNzUwNiw5NDIwODUwNiw5NDIxNzUyMyw5NDIxODY1Myw5NDIyOTgzOSw0NzA4NzExOCw0NzA4NDM5Myw5NDIxMzIwMEICQVI%3D'>
-					Como llegar
-				</BtnLink>
-	
-				<span class='font-[Oswald] text-center text-base text-[#434240] my-5'>
-					¡Nos vemos allá!
-				</span>
-	
-				<span class='font-[Oswald-Regular] text-center text-base text-[#716e6c] mb-5'>
-					Se ruega puntualidad
-				</span>
 			</div>
+
+			<span class="inline-block bg-white w-full h-[5px] absolute bottom-[10px]"/>
 		</section>
 		
 		<div class='relative max-w-full overflow-hidden'>
-			<img src='Fondo/Fondo2/Arriba derecha.png' alt='background' class='absolute -z-20 top-[-2%] right-[-2%] w-[80%] max-w-[690px] translate-x-[35%] opacity-55'>
-			<img src='Fondo/Fondo2/izquierda abajo.png' alt='background' class='absolute -z-20 bottom-[0] left-[0] w-[50%] max-w-[690px] translate-x-[-15%] translate-y-[40%]'>
-			
 			<img src='Fondo/Fondo2/izquierda arriba torcido.png' alt='background' class='absolute -z-10 top-[0] left-[0] w-[30%] max-w-[280px] translate-x-[-20%] translate-y-[-40%] rotate-[30deg]'>
 			<img src='Fondo/Fondo2/izquierda aba.1.png' alt='background' class='absolute -z-10 top-[50%] left-[0] w-[40%] max-w-[230px] translate-x-[-30%] translate-y-[-10%]'>
 			<img src='Fondo/Fondo2/Derecha abajo torcida.png' alt='background' class='absolute -z-10 top-[55%] right-[0] w-[40%] max-w-[230px] translate-x-[50%] rotate-[-55deg]'>
 			<img src='Fondo/Fondo2/Derecha arriba 1.png' alt='background' class='absolute -z-10 top-[0] right-[0] w-[40%] max-w-[230px] translate-x-[40%] translate-y-[-10%]'>
 
 			<!-- confirm -->
-			<section class='flex flex-col items-center py-20 reveal'>
-				<h2 class='font-[Oswald-Regular] text-center text-3xl text-[#434240] mb-3'>CONFIRMAR ASISTENCIA</h2>
+			<section class='flex flex-col items-center py-20 reveal mx-5'>
+				<div class="relative w-[80px] h-[80px] mb-2">
+					<img src='/animation-icons/asistencia.png' alt='phone icon' class='phone'>
+					<img src='/animation-icons/Asistencia 2.png' alt='notification icon' class='notification'>
+				</div>
 
-				<span class='font-[Oswald-Regular] text-center text-sm text-[#434240] mb-3'>Espero que estes esta noche para compartirla conmigo</span>
+				<h2 class='font-[Montserrat] text-center text-3xl text-text-color mb-3 text-balance'>CONFIRMAR ASISTENCIA</h2>
 
-				<span class='font-[Oswald-Regular] text-center text-sm text-[#434240] mb-7'>¡Confirma tu asistencia aqui abajo!</span>
+				<span class='font-[Montserrat] text-center text-xl text-text-color mb-3 text-balance'>Nosotros ya dimos el SI, ahora solo faltas vos! </span>
 
-				<BtnLink href='https://forms.gle/69jjhTgUNWd8EQZY9'>
+				<span class='font-[Montserrat] text-center text-sm text-text-color mb-7 text-balance'>¡Confirma tu asistencia aquí abajo antes del <strong>15 de Febrero!</strong></span>
+
+				<BtnLink href='https://forms.gle/gsyS9HLqBmC5uSS28'>
 					CONFIRMAR ASISTENCIA
 				</BtnLink>
 			</section>
@@ -355,76 +516,89 @@ import MusicBtn from '../components/MusicBtn.astro'
 			<section class='flex flex-col items-center pt-0 pb-20 reveal'>
 
 				<div class="relative w-[110px] h-[80px] mb-2">
-					<img src='/animation-icons/saco.png' alt='icon' class='saco'>
+					<img src='/animation-icons/traje.png' alt='icon' class='saco'>
 					<img src='/animation-icons/vestido.png' alt='icon' class='vestido'>
 				</div>
-				<h2 class='font-[Oswald-Regular] text-center text-3xl text-[#444341]'>DRESS CODE</h2>
-				<h3 class='font-[Oswald-Regular] text-center text-2xl text-[#444341] my-2'>Elegante sport</h3>
+				<h2 class='font-[Montserrat] text-center text-3xl text-text-color'>DRESS CODE</h2>
+				<h3 class='font-[Montserrat] text-center text-2xl text-text-color my-2'>FULL BLACK</h3>
 
-				<span class='font-[Oswald-Regular] text-center text-lg text-[#444341]'>¡Lo suficientemente guapos para la foto,</span>
-				<span class='font-[Oswald-Regular] text-center text-lg text-[#444341]'>pero listos para bailar toda la noche!</span>
+				<span class='font-[Montserrat] text-center text-lg text-text-color text-balance'>Vestite con la prenda negra que te permita bailar toda la noche!</span>
+				<!-- <span class='font-[Montserrat] text-center text-lg text-text-color text-balance'>lo suficientemente cómodos para bailar toda la noche!</span> -->
 			</section>
 		</div>
 
-		<div class='color-gradient'>
+		<div>
 			<!-- Playlist -->
-			<section class='flex flex-col items-center py-20 reveal'>
+			<section class='flex flex-col items-center pb-20 pt-0 reveal'>
 
-				<div class="relative w-[110px] h-[80px] mb-2">
+				<div class="relative w-[110px] h-[80px] mb-2 ">
 					<img src='/animation-icons/musica.png' alt='icon' class='musica'>
 					<img src='/animation-icons/musica derecha.png' alt='icon' class='music-right'>
 					<img src='/animation-icons/musica izquierda.png' alt='icon' class='music-left'>
 				</div>
 
-				<h2 class='font-[Oswald-Regular] text-center text-3xl text-[#434240] mb-3'>PLAYLIST</h2>
+				<h2 class='font-[Montserrat] text-center text-3xl text-text-color mb-3'>QUE NO FALTE TU CANCIÓN FAVORITA</h2>
 
-				<span class='font-[Oswald] text-center text-base text-[#444341]'>¡Tu playlist es clave para esta noche!</span>
-				<span class='font-[Oswald] text-center text-base text-[#444341] mb-5'>Contame qué canciones no pueden faltar.</span>
+				<span class='font-[Montserrat] text-center text-base text-text-color'>¡QUÉ NO FALTE TU CANCIÓN FAVORITA!</span>
+				<span class='font-[Montserrat] text-center text-base text-text-color mb-5 mx-5 text-balance'>Ayudanos a armar la lista de canciones para nuestra fiesta</span>
 
-				<BtnLink href='https://forms.gle/ZFpkfPPeZjyJgfiq8'>
+				<BtnLink href='https://forms.gle/XViUMntVBM2Bh9ju7'>
 					PLAYLIST
 				</BtnLink>
 			</section>
 
-			<!-- Gifts -->
-			<section class='flex flex-col items-center py-20 reveal'>
-
-				<div class="relative w-[80px] h-[80px] mb-2">
-					<div class="gift-icon">
-						<img src='/animation-icons/tapa.png' alt='icon' class='tapa'>
-						<img src='/animation-icons/caja.png' alt='icon' class='caja'>
-					</div>
-				</div>
-
-				<span class='font-[Oswald] text-center text-base text-[#444341]'>Tu presencia es el mejor regalo,</span>
-				<span class='font-[Oswald] text-center text-base text-[#444341]'>pero si querés sorprenderme,</span>
-				<span class='font-[Oswald] text-center text-base text-[#444341]'>cualquier detalle para cumplir mis sueños</span>
-				<span class='font-[Oswald] text-center text-base text-[#444341]'>será más que bienvenido. ¡Gracias de corazón! ✨</span>
-
-				<button id="showButton" class="btn-link bg-[#9c7a32b5] w-[206px] h-[50px] grid place-content-center rounded-full text-white text-[18px] font-[Oswald] uppercase hover:bg-black transition-all duration-300 mt-5">
-					HACER UN REGALO
-				</button>
-
-				
-			</section>
-
-			<h3 class='font-[britany] text-[#434240] text-5xl pb-20 pt-10 text-center reveal'>¡Nos vemos allá!</h3>
 		</div>
 
+		<section class='bg-background-color/70 py-10 gradient-color shadow-lg relative'>
+			<span class="inline-block bg-white w-full h-[5px] absolute top-[10px]"/>
+
+			<div class='reveal flex flex-col items-center mt-6'>
+				<div class="relative w-[80px] h-[40px] mb-2">
+					<img src='/animation-icons/tarjeta.png' alt='tarjeta icon' class='tarjeta1'>
+					<img src='/animation-icons/tarjeta.png' alt='tarjeta icon' class='tarjeta2'>
+				</div>
+
+				<h2 class='font-[Montserrat] text-3xl text-white mt-1 mb-3'>VALOR DE LA TARJETA</h2>
+
+				<div class='flex flex-col font-[Montserrat] text-base text-white mb-5 mx-5 text-balance items-center'>
+					<p>Adultos $45.000</p>
+					<p>Niños (de 3 a 8 años) $20.500</p>
+				</div>
+
+				<button id="showButton" class="btn-link h-[50px] pt-[2px] px-5 grid place-content-center rounded-full text-button-text-color text-[18px] font-[Montserrat] uppercase transition-all duration-300 mt-5 border hover:bg-background-color hover:text-white">
+					PAGUE AQUI
+				</button>
+			</div>
+
+			<span class="inline-block bg-white w-full h-[5px] absolute bottom-[10px]"/>
+		</section>
+		
+		<h3 class='font-[britany] text-text-color text-5xl pb-20 pt-10 text-center reveal mx-5 text-balance -rotate-12 mt-20'>Vamos como queremos, volvemos como podemos!</h3>
+
 		<!-- modal -->
-		<div class="modal-container hidden fixed inset-0 top-0 bg-[#9c7b3279] h-screen w-screen place-content-center backdrop-blur-lg px-[20px]" id="modal-container">
-			<div class="modal bg-[url('/Fondo/modal-bg.webp')] bg-cover bg-center bg-no-repeat rounded-lg px-5 py-6 flex flex-col w-full">
+		<div class="modal-container hidden fixed inset-0 top-0 bg-background-color/50 h-screen w-screen place-content-center backdrop-blur-lg px-[20px]" id="modal-container">
+			<div id="modal-bg" class="modal-bg w-full h-full absolute inset-0 bg-transparent z-10" />
+
+			<div class="modal bg-[url('/background-modal.jpg')] bg-cover bg-center bg-no-repeat rounded-lg px-5 py-6 flex flex-col w-full z-50">
 				<section class="mb-5">
-					<h3 class="font-[Oswald] text-center text-3xl text-[#444341]">DATOS BANCARIOS</h3>
-					<p class="font-[Oswald] text-center text-xl text-[#444341]">Nombre del Titular: Morena Serra</p>
-					<p class="font-[Oswald] text-center text-xl text-[#444341]">Alias: morenaserra</p>
-					<p class="font-[Oswald] text-center text-xl text-[#444341]">Mercado Pago</p>
+					<h3 class="font-[Montserrat] text-center text-3xl text-text-color">DATOS BANCARIOS</h3>
+
+					<div>
+						<p class="font-[Montserrat] text-center text-xl text-text-color">Nombre del Titular: Anael</p>
+						<p class="font-[Montserrat] text-center text-xl text-text-color">Alias: anael.769.mp</p>
+					</div>
+
+					<br/>
+					
+					<div>
+						<p class="font-[Montserrat] text-center text-xl text-text-color">Nombre del Titular: Braian</p>
+						<p class="font-[Montserrat] text-center text-xl text-text-color">Alias: Braian.086.b</p>
+					</div>
 				</section>
 
 				<section>
-					<h3 class="font-[Oswald] text-center text-3xl text-[#444341]">BUZON DE REGALOS</h3>
-					<p class="font-[Oswald] text-center text-xl text-[#444341]">Si deseas hacer tu regalo personalmente,</p>
-					<p class="font-[Oswald] text-center text-xl text-[#444341]">El dia del evento habra un buzon para dejar obsequios</p>
+					<!-- <h3 class="font-[Montserrat] text-center text-3xl text-text-color">BUZON DE REGALOS</h3> -->
+					<p class="font-[Montserrat] text-center text-lg text-text-color">Si no tambien puedes abonar en efectivo</p>
 				</section>
 			</div>
 		</div>
@@ -474,6 +648,7 @@ import MusicBtn from '../components/MusicBtn.astro'
 		<script>
 			const showButton = document.getElementById('showButton');
 			const modal = document.getElementById('modal-container');
+			const backgroundModal = document.getElementById('modal-bg')
 
 			let show = false
 			showButton.addEventListener('click', () => {
@@ -481,7 +656,7 @@ import MusicBtn from '../components/MusicBtn.astro'
 				modal.style.display = show ? 'grid' : 'none';
 			});
 
-			modal.addEventListener('click', () => {
+			backgroundModal.addEventListener('click', () => {
 				show = false
 				modal.style.display = 'none';
 			})

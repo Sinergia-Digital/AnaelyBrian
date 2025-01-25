@@ -1,17 +1,37 @@
 <div class="pb-24">
-  <h1 class="font-[Oswald-Regular] text-center text-2xl text-[#434240]">¡La cuenta regresiva ha empezado!</h1>
-  <div id="timer" class="font-[Oswald-Regular] text-center text-[45px] text-[#434240]">Cargando...</div>
+  <h1 class="font-[Montserrat] text-center text-xl text-text-color text-balance mx-5">¡La cuenta regresiva ha empezado!</h1>
+  <div id="timer" class="font-[Montserrat] text-center text-[35px] md:text-[45px] text-text-color flex gap-5 justify-center">
+    <div class="flex flex-col items-center">
+        <span id="Dias"></span>
+        <span class="text-sm text-black/70 -mt-3">Dias</span>
+    </div>
+    <div class="flex flex-col items-center">
+        <span id="Horas"></span>
+        <span class="text-sm text-black/70 -mt-3">Horas</span>
+    </div>
+    <div class="flex flex-col items-center">
+        <span id="Minutos"></span>
+        <span class="text-sm text-black/70 -mt-3">Minutos</span>
+    </div>
+    <div class="flex flex-col items-center">
+        <span id="Segundos"></span>
+        <span class="text-sm text-black/70 -mt-3">Segundos</span>
+    </div>
+  </div>
 </div>
 
 <script>
-    // Fecha objetivo: 20 de diciembre de 2024, 21:00 horas
-    const targetDate = new Date('2024-12-20T21:00:00');
+    const targetDate = new Date('2025-02-28T21:30:00');
 
     // Actualiza el temporizador cada segundo
     const updateTimer = () => {
         const now = new Date();
         const difference = targetDate - now;
         const timerElement = document.getElementById('timer')
+        const daysElement = document.getElementById('Dias')
+        const hoursElement = document.getElementById('Horas')
+        const minutesElement = document.getElementById('Minutos')
+        const secondsElement = document.getElementById('Segundos')
 
         if (difference <= 0) {
             timerElement.textContent = "¡El momento ha llegado!";
@@ -26,8 +46,10 @@
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
         // Muestra el temporizador
-        timerElement.textContent = 
-            `${days}d ${hours}h ${minutes}m ${seconds}s`
+        daysElement.textContent = `${days}`.padStart(2, '0')
+        hoursElement.textContent = `${hours}`.padStart(2, '0')
+        minutesElement.textContent = `${minutes}`.padStart(2, '0')
+        secondsElement.textContent = `${seconds}`.padStart(2, '0')
     };
 
     // Llama a la función inmediatamente y luego cada segundo

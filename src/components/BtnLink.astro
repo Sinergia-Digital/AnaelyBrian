@@ -1,7 +1,7 @@
 ---
-  const { href } = Astro.props;
+  const { href, outline } = Astro.props;
 ---
 
-<a href={href} target="_blank" class="btn-link bg-[#9c7a32b5] w-[206px] h-[50px] grid place-content-center rounded-full text-white text-[18px] font-[Oswald] uppercase hover:bg-black transition-all duration-300">
+<a href={href} target="_blank" class=`btn-link h-[50px] pt-[2px] px-5 grid place-content-center rounded-full text-button-text-color text-[18px] font-[Montserrat] uppercase transition-all duration-300 mt-5 border ${outline ? 'border-white' : 'bg-botton-color' } hover:bg-background-color hover:text-white`>
   <slot />
 </a>
